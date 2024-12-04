@@ -116,7 +116,7 @@ model = AutoModel(
 )
 
 # en
-res = model.generate(
+res = model.convert_mp3_to_text(
     input=f"{model.model_path}/example/en.mp3",
     cache={},
     language="auto",  # "zh", "en", "yue", "ja", "ko", "nospeech"
@@ -148,12 +148,12 @@ print(text)
 ```python
 model = AutoModel(model=model_dir, trust_remote_code=True, device="cuda:0")
 
-res = model.generate(
+res = model.convert_mp3_to_text(
     input=f"{model.model_path}/example/en.mp3",
     cache={},
-    language="auto", # "zh", "en", "yue", "ja", "ko", "nospeech"
+    language="auto",  # "zh", "en", "yue", "ja", "ko", "nospeech"
     use_itn=True,
-    batch_size=64, 
+    batch_size=64,
 )
 ```
 

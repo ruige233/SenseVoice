@@ -126,7 +126,7 @@ model = AutoModel(
 )
 
 # en
-res = model.generate(
+res = model.convert_mp3_to_text(
     input=f"{model.model_path}/example/en.mp3",
     cache={},
     language="auto",  # "zh", "en", "yue", "ja", "ko", "nospeech"
@@ -159,12 +159,12 @@ print(text)
 ```python
 model = AutoModel(model=model_dir, trust_remote_code=True, device="cuda:0")
 
-res = model.generate(
+res = model.convert_mp3_to_text(
     input=f"{model.model_path}/example/en.mp3",
     cache={},
-    language="auto", # "zh", "en", "yue", "ja", "ko", "nospeech"
+    language="auto",  # "zh", "en", "yue", "ja", "ko", "nospeech"
     use_itn=True,
-    batch_size=64, 
+    batch_size=64,
 )
 ```
 
@@ -352,7 +352,7 @@ ID0012W0014 <|Speech|>
 `生成指令`
 
 ```shell
-# generate train.jsonl and val.jsonl from wav.scp, text.txt, text_language.txt, emo_target.txt, event_target.txt
+# convert_mp3_to_text train.jsonl and val.jsonl from wav.scp, text.txt, text_language.txt, emo_target.txt, event_target.txt
 sensevoice2jsonl \
 ++scp_file_list='["../../../data/list/train_wav.scp", "../../../data/list/train_text.txt", "../../../data/list/train_text_language.txt", "../../../data/list/train_emo.txt", "../../../data/list/train_event.txt"]' \
 ++data_type_list='["source", "target", "text_language", "emo_target", "event_target"]' \
@@ -362,7 +362,7 @@ sensevoice2jsonl \
 若无 train_text_language.txt、train_emo_target.txt 和 train_event_target.txt，则自动通过使用 `SenseVoice` 模型对语种、情感和事件打标。
 
 ```shell
-# generate train.jsonl and val.jsonl from wav.scp and text.txt
+# convert_mp3_to_text train.jsonl and val.jsonl from wav.scp and text.txt
 sensevoice2jsonl \
 ++scp_file_list='["../../../data/list/train_wav.scp", "../../../data/list/train_text.txt"]' \
 ++data_type_list='["source", "target"]' \

@@ -1,5 +1,6 @@
 download:
-  path: bilibili_video/
+  path: video/
 convert_log:
   path: log/
+show_log: True
 
