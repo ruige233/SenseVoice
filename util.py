@@ -90,7 +90,7 @@ model = AutoModel(
 
 
 # convert_mp3_to_text
-def convert_mp3_to_text(file):
+def convert_mp3_to_text(file, keepOriginalFile=False):
     res = model.generate(
         # input=f"{model.model_path}/example/en.mp3",
         input=file,
@@ -106,11 +106,20 @@ def convert_mp3_to_text(file):
     )
     text = rich_transcription_postprocess(res[0]["text"])
     print('识别成功：', text)
-    os.remove(file)
+    if not keepOriginalFile:
+        os.remove(file)
     return text
 
 
-# </editor-fold>
+def convert_mp3_to_file(file, keepOriginalFile=False, output_file=None):
+    text = convert_mp3_to_text(file, keepOriginalFile)
+    if output_file is None:
+        output_file = file + '.txt'
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(text)
+    return output_file
+    # </editor-fold>
 
 
 def merge_videos(input_files, output_file):

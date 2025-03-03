@@ -7,7 +7,7 @@ from utils.yaml_parse import ConfigManager
 
 db_manager = ConfigManager()
 
-
+"""转换视频文件为MP3文件"""
 def flv_mp3(source_file):
     print(f"mp3转换文件：{source_file}")
     mp3_file = f"{source_file}.mp3"

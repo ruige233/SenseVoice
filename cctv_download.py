@@ -89,6 +89,7 @@ def download_m3u8(m3u8_url, file_name, output_dir=f'{config_manager.download_pat
 
 
 if __name__ == '__main__':
+    '''下载MP3并转换为文本'''
     base_url = 'https://tv.cctv.com/2024/12/02/VIDEQ7JTCOmuMw5T5qekYv7c241202.shtml'
     m3u8_url = 'https://dh5.cntv.lxdns.com/asp/h5e/hls/main/0303000a/3/default/bd496547c8464a0bae4d064df462313b/main.m3u8?maxbr=2048&contentid=15120519184043'
     html_content = requests.get(base_url, headers=HEADERS)
